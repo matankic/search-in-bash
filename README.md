@@ -15,7 +15,7 @@ now, type the following command to edit ```.bashrc```
 $ cd ~
 $ vim .bashrc
 ```
-type ```i``` or ```insert`` keys, scroll down and add somewhere:
+type ```i``` or ```insert``` keys, scroll down and add somewhere:
 ```bash
 search(){  
     ~/./search.sh $@  
