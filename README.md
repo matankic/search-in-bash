@@ -15,9 +15,17 @@ now, type the following command to edit ```.bashrc```
 $ cd ~
 $ vim .bashrc
 ```
-scroll down and add somewhere:
+type ```i``` or ```insert`` keys, scroll down and add somewhere:
 ```bash
 search(){  
     ~/./search.sh $@  
 }
 ```
+for saving changes type ```Esc``` key, then ```:wq```  
+type ```source .bashrc``` for making changes to appeal
+
+now, try wrriting something like
+```
+$ search -dp wikipedia: red pandas
+```
+or if you want help, type ```search --help```
