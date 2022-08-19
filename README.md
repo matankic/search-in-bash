@@ -1,13 +1,19 @@
 # search-in-bash
 basic script written in bash, google search right from your terminal!
 
-just add it as an alias to your .bashrc  
-for example, let assume you've cloned this script to /home directiory,  
-all you have to do add to the .bashrc file is:
+for Linux machines only!
 
+just add it as an alias to your ```.bashrc```  file  
+for example, let assume you've cloned this script to your ```/home``` directiory,  
+all you have to do add to the ```.bashrc``` file is:
+
+```bash
 search(){  
-  ~/./search.sh $@  
+    ~/./search.sh $@  
 }
+```
 
-you might need also 'activate' this script with:  
+you might also need to 'activate' this script before, followed with: 
+```bash
 $ sudo chmod +x search.sh
+```
