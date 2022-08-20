@@ -1,5 +1,5 @@
 # search-in-bash
-basic script written in bash, google search right from your terminal!
+basic script written in bash, web search right from the terminal!
 
 for Linux machines only!
 
@@ -22,10 +22,10 @@ search(){
 }
 ```
 for saving changes type ```Esc``` key, then ```:wq```  
-type ```source .bashrc``` for making changes to appeal
+type ```source .bashrc``` for making changes appeal
 
-now, try wrriting something like
+now, try writting something like
 ```
-$ search -dp wikipedia: red pandas
+$ search -dpw red pandas
 ```
 or if you want help, type ```search --help```
