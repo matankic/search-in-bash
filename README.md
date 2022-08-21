@@ -21,7 +21,7 @@ search(){
     ~/./search.sh $@  
 }
 ```
-for saving changes type ```Esc``` key, then ```:wq```  
+for saving changes type ```Esc``` key, then ```:wq``` and ```Enter```  
 type ```source .bashrc``` for making changes appeal
 
 now, try writting something like
