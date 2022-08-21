@@ -39,15 +39,7 @@ else
 	
 	for arg in $@
 	do
-		if [[ "${arg::1}" != "-h" && "${arg::2}" != "-r" &&
-		 "${arg::2}" != "-d" && "${arg::2}" != "-p"  && 
-		 "${arg::2}" != "-a" && "${arg::2}" != "-b"  && 
-		 "${arg::2}" != "-k" && "${arg::2}" != "-y"  && 
-		 "${arg::2}" != "-w" && "${arg}" != "--help" && 
-		 "${arg}" != "--regular" && "${arg}" != "--direct" && 
-		 "${arg}" != "--private" && "${arg}" != "--amazon"  && 
-		 "${arg}" != "--bing" && "${arg}" != "--duckduckgo" && 
-		 "${arg}" != "--yandex" && "${arg}" != "--wikipedia" ]]; then
+		if [[ "${arg::1}" != "-" || "${arg}" == "-" ]]; then
 			query+="${arg}+"
 		fi
 	done
@@ -95,28 +87,19 @@ else
 		echo -e "Please type again or type --help\033[0m"
 		exit
 	elif [ $value == 1 ]; then
-		if [ $amazon == 1 ]; then
-			# no free or avialable direct searchs for amazon
-			var+="https://www.amazon.com/s?k="
-		elif [ $bing == 1 ]; then
-			# no free or avialable direct searchs for bing
-			var+="https://www.bing.com/search?q="
-		elif [ $duckduckgo == 1 ]; then
-			var+="https://duckduckgo.com/?"
-			if [ $direct == 1 ]; then
-				var+="q=\\"	
-			else
-				var+="q="
+		if [ $direct == 1 ]; then
+			if [ $amazon == 1 ]; then var+="https://www.amazon.com/s?k="
+			elif [ $bing == 1 ]; then var+="https://www.bing.com/search?q="
+			elif [ $duckduckgo == 1 ]; then var+="https://duckduckgo.com/?q=\\"
+			elif [ $yandex == 1 ]; then var+="https://yandex.com/search/?text="
+			elif [ $wikipedia == 1 ]; then var+="https://en.wikipedia.org/wiki/Special:Search?search="
 			fi
-		elif [ $yandex == 1 ]; then
-			# no free or avialable direct searchs for yandex
-			var+="https://yandex.com/search/?text="
-		elif [ $wikipedia == 1 ]; then
-			var+="https://en.wikipedia.org/"
-			if [ $direct == 1 ]; then
-				var+="wiki/Special:Search?search="	
-			else
-				var+="w/index.php?title=Special:Search&profile=advanced&fulltext=1&ns0=1&search="
+		else
+			if [ $amazon == 1 ]; then var+="https://www.amazon.com/s?k="
+			elif [ $bing == 1 ]; then var+="https://www.bing.com/search?q="
+			elif [ $duckduckgo == 1 ]; then var+="https://duckduckgo.com/?q="
+			elif [ $yandex == 1 ]; then var+="https://yandex.com/search/?text="
+			elif [ $wikipedia == 1 ]; then var+="https://en.wikipedia.org/w/index.php?title=Special:Search&profile=advanced&fulltext=1&ns0=1&search="
 			fi
 		fi	
 	elif [ $value == 0 ]; then # google search by default
