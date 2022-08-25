@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage(){
-	echo -e "                              Welcome to \033[1;94mS\033[1;91me\033[1;93ma\033[1;94mr\033[1;92mc\033[1;91mh\033[0m !"
+	echo -e "\n\n                              Welcome to \033[1;94mS\033[1;91me\033[1;93ma\033[1;94mr\033[1;92mc\033[1;91mh\033[0m !\n"
 	echo "                This script runs by default with firefox browser"
 	echo "                      and searX as its  metasearch engine,"
 	echo -e "                          developed by \033[4mMatan Kichler\033[0m\n"
@@ -10,17 +10,20 @@ usage(){
 	echo -e "example: $ search -dpw red panda\n"
 	echo "search options :"
 	echo "  -h  or  --help	Print Help and exit"
-	echo "  -r  or  --regular	Regular ordinary search"
+	echo "  -r  or  --regular	Regular ordinary search (by default)"
 	echo -e "  -d  or  --direct	'I'm feeling Lucky' search option\n"
 	echo "firefox options :"
-	echo "  -p  or  --private	Opens a new intance in a private window"
+	echo -e "  -p  or  --private	Opens a new intance in a private window\n"
 	echo "search engine options :"
 	echo "  -a  or  --amazon	Search in Amazon"
 	echo "  -b  or  --bing	Search in Bing"
 	echo "  -g  or  --google	Search in Google"
 	echo "  -k  or  --duckduckgo	Search in DuckDuckGo"
 	echo "  -y  or  --yandex	Search in Yandex"
-	echo "  -w  or  --wikipedia	Search in Wikipedia"	
+	echo -e "  -w  or  --wikipedia	Search in Wikipedia\n"	
+	echo "other options :"
+	echo "  -U  or  --URL		Print search query or found site URL"
+	echo "  -m  or  --mpv		Tries to open URL with mpv"
 }
 
 
@@ -31,6 +34,10 @@ else
 	regular=0
 	direct=0
 	private=0
+	
+	URL=0
+	mpv=0
+	
 	amazon=0
 	bing=0
 	google=0
@@ -49,7 +56,7 @@ else
 		fi
 	done
 	
-	while getopts 'hrdp-:abgkyw' opt
+	while getopts 'hrdp-:abgkywUm' opt
 	do
 		case $opt in
 			h) usage; exit;;
@@ -57,6 +64,8 @@ else
 			d) direct=1;;
 			p) private=1;;
 			a) amazon=1;;
+			U) URL=1;;
+			m) mpv=1;;
 			b) bing=1;;
 			g) google=1;;
 			k) duckduckgo=1;;
@@ -69,6 +78,8 @@ else
 					"regular"*) regular=1;;
 					"direct"*) direct=1;;
 					"private"*) private=1;;
+					"URL"*) URL=1;;
+					"mpv"*) mpv=1;;
 					"amazon"*) amazon=1;;
 					"bing"*) bing=1;;
 					"google"*) google=1;;
@@ -122,6 +133,15 @@ else
 	fi
 	
 	var+="${query}"
+	
+	if [ $URL == 1 ]; then
+		echo "$var"
+	fi
+	
+	if [ $mpv == 1 ]; then
+		mpv "$var"
+		exit
+	fi
 	
 	if [ $private == 1 ]; then
 		firefox --private-window "$var"
