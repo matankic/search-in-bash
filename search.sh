@@ -134,18 +134,25 @@ else
 	
 	var+="${query}"
 	
-	if [ $URL == 1 ]; then
-		echo "$var"
-	fi
-	
-	if [ $mpv == 1 ]; then
-		mpv "$var"
-		exit
-	fi
-	
 	if [ $private == 1 ]; then
 		firefox --private-window "$var"
 	else
 		firefox "$var"
+	fi
+	
+	sleep 3
+	
+	if [ $URL == 1 ]; then
+		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+l'
+		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+c'
+		clip=`xclip -o -selection clipboard`
+		echo "$clip"
+	fi
+	
+	if [ $mpv == 1 ]; then
+		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+l'
+		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+c'
+		clip=`xclip -o -selection clipboard`
+		mpv "$clip"
 	fi
 fi
