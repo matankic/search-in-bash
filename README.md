@@ -31,5 +31,5 @@ $ search -dpw red pandas
 or if you want help, type ```search --help```
 
 -----
-If you desirre in 'Other options', aka 'echo' found URL or open videos in mpv, make sure to install ```xclip```, ```xdotool``` and ```mpv```.  
+If you desire in 'Other options', aka 'echo' found URL or open videos in mpv, make sure to install ```xclip```, ```xdotool``` and ```mpv```.  
 Thanks!
