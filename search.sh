@@ -153,6 +153,6 @@ else
 		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+l'
 		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+c'
 		clip=`xclip -o -selection clipboard`
-		mpv "$clip"
+		mpv --no-video "$clip"
 	fi
 fi
