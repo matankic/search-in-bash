@@ -143,15 +143,13 @@ else
 	sleep 3
 	
 	if [ $URL == 1 ]; then
-		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+l'
-		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+c'
+		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+l' key 'ctrl+c' key 'ctrl+w'
 		clip=`xclip -o -selection clipboard`
 		echo "$clip"
 	fi
 	
 	if [ $mpv == 1 ]; then
-		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+l'
-		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+c'
+		xdotool search --onlyvisible --classname Navigator windowactivate --sync key 'ctrl+l' key 'ctrl+c' key 'ctrl+w'
 		clip=`xclip -o -selection clipboard`
 		mpv --no-video --loop-file "$clip"
 	fi
